@@ -1,14 +1,11 @@
 package self.jjjyjj.chapter4_collaboration;
 
-import lombok.Getter;
-
 import java.math.BigDecimal;
 
 /**
  * Class that represents a monetary amount.
  */
 public class Money {
-    @Getter
     private final BigDecimal amount;
     private final String currency;
 
@@ -23,4 +20,15 @@ public class Money {
         p.print(currency);
     }
 
+    public void addToTracker(TotalTracker tracker) {
+        tracker.addAmount(this);
+    }
+
+    public Money add(Money other) {
+        if (currency.equals(other.currency)) {
+            return new Money(amount.add(other.amount), currency);
+        } else {
+            throw new IllegalArgumentException("Cannot add money of different currencies");
+        }
+    }
 }
