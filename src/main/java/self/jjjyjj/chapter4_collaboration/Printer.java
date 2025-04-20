@@ -5,6 +5,10 @@ package self.jjjyjj.chapter4_collaboration;
  */
 public class Printer {
     public void print(String text) {
-        // TODO
+        System.out.print(text);
+    }
+
+    public void newline() {
+        System.out.println();
     }
 }

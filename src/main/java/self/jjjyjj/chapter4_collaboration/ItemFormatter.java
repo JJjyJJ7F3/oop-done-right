@@ -1,18 +1,22 @@
 package self.jjjyjj.chapter4_collaboration;
 
 /**
- * A simple item class that can be printed.
+ * Class that formats an item for printing.
  */
-public class Item {
+public class ItemFormatter {
     private final String description;
     private final Money price;
 
-    public Item(String description, Money price) {
+    public ItemFormatter(String description, Money price) {
         this.description = description;
         this.price = price;
     }
 
     public void print(Printer p) {
-        new ItemFormatter(description, price).print(p);
+        p.print(description);
+        p.print(" ");
+        price.print(p);
+
+        p.newline();
     }
 }
