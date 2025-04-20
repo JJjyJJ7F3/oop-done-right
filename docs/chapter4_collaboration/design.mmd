@@ -1,0 +1,10 @@
+classDiagram
+    class Item {
+        +print(Printer p) void
+    }
+    
+    class Printer {
+        +print(String text) void
+    }
+    
+    Item ..> Printer : uses

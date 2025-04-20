@@ -24,7 +24,7 @@ class BankAccount {
 class TransferService {
     /**
      * Transfers a specified amount from one account to another.
-     * This method asks for the state of the 'from' account to check if there are sufficient funds,
+     * This method asks for the state of the 'from' account to check if there are enough funds,
      * which violates the "Tell, Don't Ask" principle.
      * 
      * @param from the account to transfer money from
