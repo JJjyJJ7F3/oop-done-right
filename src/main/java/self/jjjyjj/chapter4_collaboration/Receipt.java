@@ -1,5 +1,6 @@
 package self.jjjyjj.chapter4_collaboration;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  */
 public class Receipt {
     private final Printer printer;
+    private BigDecimal total = BigDecimal.ZERO;
     private final List<Item> items = new ArrayList<>();
 
     public Receipt(Printer printer) {
@@ -21,10 +23,14 @@ public class Receipt {
      */
     public void print() {
         items.forEach(item -> item.print(printer));
+        printer.print("------------Total: ");
+        printer.print(total.toPlainString());
     }
 
     public void add(String description, Money price) {
         items.add(new Item(description, price));
+
+        total = total.add(price.getAmount());
     }
 
 
