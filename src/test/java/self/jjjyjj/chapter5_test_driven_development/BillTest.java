@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BillTest {
     @Test
-    public void totalStartsAtZero() {
+    public void totalAmountIsZero() {
         // Arrange
         var bill = new Bill();
 
@@ -28,5 +28,19 @@ public class BillTest {
 
         // Assert
         assertThat(total).isEqualTo(12.4F);
+    }
+
+    @Test
+    public void correctTotalForTwoItems() {
+        // Arrange
+        var calculator = new Bill();
+
+        // Act
+        calculator.add(12.4F);
+        calculator.add(10.0F);
+        float total = calculator.getTotal();
+
+        // Assert
+        assertThat(total).isEqualTo(22.4F);
     }
 }

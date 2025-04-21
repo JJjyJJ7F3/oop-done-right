@@ -10,6 +10,6 @@ public class Bill {
     private float total;
 
     public void add(float amount) {
-        total = amount;
+        total += amount;
     }
 }
