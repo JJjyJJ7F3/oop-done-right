@@ -1,21 +1,34 @@
 package self.jjjyjj.chapter8_tdd_and_test_doubles;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 class TextConversionTest {
+    @Mock
+    private Input input;
+
+    @Mock
+    private Output output;
+
+    @BeforeEach
+    public void beforeEachTest() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+
     @Test
     public void displayUpperCasedInput() {
         // Arrange
-        var input = new StubInput("Hello World!");
-        var output = new MockOutput();
-        var textConversion = new TextConversion(input, output);
+        Mockito.when(input.fetch()).thenReturn("hello world");
+        var tc = new TextConversion(input, output);
 
         // Act
-        textConversion.showInputInUpperCase();
+        tc.showInputInUpperCase();
 
         // Assert
-        assertEquals("HELLO WORLD!", output.getActual());
+        Mockito.verify(output, Mockito.times(1)).display("HELLO WORLD");
     }
 }
